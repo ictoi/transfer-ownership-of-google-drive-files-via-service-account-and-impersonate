@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Google Apps Script</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+<!--<![endif]-->
+<style>@media screen and (min-width:35.5em){.u-sm-1,.u-sm-1-1,.u-sm-1-12,.u-sm-1-2,.u-sm-1-24,.u-sm-1-3,.u-sm-1-4,.u-sm-1-5,.u-sm-1-6,.u-sm-1-8,.u-sm-10-24,.u-sm-11-12,.u-sm-11-24,.u-sm-12-24,.u-sm-13-24,.u-sm-14-24,.u-sm-15-24,.u-sm-16-24,.u-sm-17-24,.u-sm-18-24,.u-sm-19-24,.u-sm-2-24,.u-sm-2-3,.u-sm-2-5,.u-sm-20-24,.u-sm-21-24,.u-sm-22-24,.u-sm-23-24,.u-sm-24-24,.u-sm-3-24,.u-sm-3-4,.u-sm-3-5,.u-sm-3-8,.u-sm-4-24,.u-sm-4-5,.u-sm-5-12,.u-sm-5-24,.u-sm-5-5,.u-sm-5-6,.u-sm-5-8,.u-sm-6-24,.u-sm-7-12,.u-sm-7-24,.u-sm-7-8,.u-sm-8-24,.u-sm-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.u-sm-1-24{width:4.1667%}.u-sm-1-12,.u-sm-2-24{width:8.3333%}.u-sm-1-8,.u-sm-3-24{width:12.5%}.u-sm-1-6,.u-sm-4-24{width:16.6667%}.u-sm-1-5{width:20%}.u-sm-5-24{width:20.8333%}.u-sm-1-4,.u-sm-6-24{width:25%}.u-sm-7-24{width:29.1667%}.u-sm-1-3,.u-sm-8-24{width:33.3333%}.u-sm-3-8,.u-sm-9-24{width:37.5%}.u-sm-2-5{width:40%}.u-sm-10-24,.u-sm-5-12{width:41.6667%}.u-sm-11-24{width:45.8333%}.u-sm-1-2,.u-sm-12-24{width:50%}.u-sm-13-24{width:54.1667%}.u-sm-14-24,.u-sm-7-12{width:58.3333%}.u-sm-3-5{width:60%}.u-sm-15-24,.u-sm-5-8{width:62.5%}.u-sm-16-24,.u-sm-2-3{width:66.6667%}.u-sm-17-24{width:70.8333%}.u-sm-18-24,.u-sm-3-4{width:75%}.u-sm-19-24{width:79.1667%}.u-sm-4-5{width:80%}.u-sm-20-24,.u-sm-5-6{width:83.3333%}.u-sm-21-24,.u-sm-7-8{width:87.5%}.u-sm-11-12,.u-sm-22-24{width:91.6667%}.u-sm-23-24{width:95.8333%}.u-sm-1,.u-sm-1-1,.u-sm-24-24,.u-sm-5-5{width:100%}}@media screen and (min-width:48em){.u-md-1,.u-md-1-1,.u-md-1-12,.u-md-1-2,.u-md-1-24,.u-md-1-3,.u-md-1-4,.u-md-1-5,.u-md-1-6,.u-md-1-8,.u-md-10-24,.u-md-11-12,.u-md-11-24,.u-md-12-24,.u-md-13-24,.u-md-14-24,.u-md-15-24,.u-md-16-24,.u-md-17-24,.u-md-18-24,.u-md-19-24,.u-md-2-24,.u-md-2-3,.u-md-2-5,.u-md-20-24,.u-md-21-24,.u-md-22-24,.u-md-23-24,.u-md-24-24,.u-md-3-24,.u-md-3-4,.u-md-3-5,.u-md-3-8,.u-md-4-24,.u-md-4-5,.u-md-5-12,.u-md-5-24,.u-md-5-5,.u-md-5-6,.u-md-5-8,.u-md-6-24,.u-md-7-12,.u-md-7-24,.u-md-7-8,.u-md-8-24,.u-md-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.u-md-1-24{width:4.1667%}.u-md-1-12,.u-md-2-24{width:8.3333%}.u-md-1-8,.u-md-3-24{width:12.5%}.u-md-1-6,.u-md-4-24{width:16.6667%}.u-md-1-5{width:20%}.u-md-5-24{width:20.8333%}.u-md-1-4,.u-md-6-24{width:25%}.u-md-7-24{width:29.1667%}.u-md-1-3,.u-md-8-24{width:33.3333%}.u-md-3-8,.u-md-9-24{width:37.5%}.u-md-2-5{width:40%}.u-md-10-24,.u-md-5-12{width:41.6667%}.u-md-11-24{width:45.8333%}.u-md-1-2,.u-md-12-24{width:50%}.u-md-13-24{width:54.1667%}.u-md-14-24,.u-md-7-12{width:58.3333%}.u-md-3-5{width:60%}.u-md-15-24,.u-md-5-8{width:62.5%}.u-md-16-24,.u-md-2-3{width:66.6667%}.u-md-17-24{width:70.8333%}.u-md-18-24,.u-md-3-4{width:75%}.u-md-19-24{width:79.1667%}.u-md-4-5{width:80%}.u-md-20-24,.u-md-5-6{width:83.3333%}.u-md-21-24,.u-md-7-8{width:87.5%}.u-md-11-12,.u-md-22-24{width:91.6667%}.u-md-23-24{width:95.8333%}.u-md-1,.u-md-1-1,.u-md-24-24,.u-md-5-5{width:100%}}@media screen and (min-width:58em){.u-lg-1,.u-lg-1-1,.u-lg-1-12,.u-lg-1-2,.u-lg-1-24,.u-lg-1-3,.u-lg-1-4,.u-lg-1-5,.u-lg-1-6,.u-lg-1-8,.u-lg-10-24,.u-lg-11-12,.u-lg-11-24,.u-lg-12-24,.u-lg-13-24,.u-lg-14-24,.u-lg-15-24,.u-lg-16-24,.u-lg-17-24,.u-lg-18-24,.u-lg-19-24,.u-lg-2-24,.u-lg-2-3,.u-lg-2-5,.u-lg-20-24,.u-lg-21-24,.u-lg-22-24,.u-lg-23-24,.u-lg-24-24,.u-lg-3-24,.u-lg-3-4,.u-lg-3-5,.u-lg-3-8,.u-lg-4-24,.u-lg-4-5,.u-lg-5-12,.u-lg-5-24,.u-lg-5-5,.u-lg-5-6,.u-lg-5-8,.u-lg-6-24,.u-lg-7-12,.u-lg-7-24,.u-lg-7-8,.u-lg-8-24,.u-lg-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.u-lg-1-24{width:4.1667%}.u-lg-1-12,.u-lg-2-24{width:8.3333%}.u-lg-1-8,.u-lg-3-24{width:12.5%}.u-lg-1-6,.u-lg-4-24{width:16.6667%}.u-lg-1-5{width:20%}.u-lg-5-24{width:20.8333%}.u-lg-1-4,.u-lg-6-24{width:25%}.u-lg-7-24{width:29.1667%}.u-lg-1-3,.u-lg-8-24{width:33.3333%}.u-lg-3-8,.u-lg-9-24{width:37.5%}.u-lg-2-5{width:40%}.u-lg-10-24,.u-lg-5-12{width:41.6667%}.u-lg-11-24{width:45.8333%}.u-lg-1-2,.u-lg-12-24{width:50%}.u-lg-13-24{width:54.1667%}.u-lg-14-24,.u-lg-7-12{width:58.3333%}.u-lg-3-5{width:60%}.u-lg-15-24,.u-lg-5-8{width:62.5%}.u-lg-16-24,.u-lg-2-3{width:66.6667%}.u-lg-17-24{width:70.8333%}.u-lg-18-24,.u-lg-3-4{width:75%}.u-lg-19-24{width:79.1667%}.u-lg-4-5{width:80%}.u-lg-20-24,.u-lg-5-6{width:83.3333%}.u-lg-21-24,.u-lg-7-8{width:87.5%}.u-lg-11-12,.u-lg-22-24{width:91.6667%}.u-lg-23-24{width:95.8333%}.u-lg-1,.u-lg-1-1,.u-lg-24-24,.u-lg-5-5{width:100%}}@media screen and (min-width:75em){.u-xl-1,.u-xl-1-1,.u-xl-1-12,.u-xl-1-2,.u-xl-1-24,.u-xl-1-3,.u-xl-1-4,.u-xl-1-5,.u-xl-1-6,.u-xl-1-8,.u-xl-10-24,.u-xl-11-12,.u-xl-11-24,.u-xl-12-24,.u-xl-13-24,.u-xl-14-24,.u-xl-15-24,.u-xl-16-24,.u-xl-17-24,.u-xl-18-24,.u-xl-19-24,.u-xl-2-24,.u-xl-2-3,.u-xl-2-5,.u-xl-20-24,.u-xl-21-24,.u-xl-22-24,.u-xl-23-24,.u-xl-24-24,.u-xl-3-24,.u-xl-3-4,.u-xl-3-5,.u-xl-3-8,.u-xl-4-24,.u-xl-4-5,.u-xl-5-12,.u-xl-5-24,.u-xl-5-5,.u-xl-5-6,.u-xl-5-8,.u-xl-6-24,.u-xl-7-12,.u-xl-7-24,.u-xl-7-8,.u-xl-8-24,.u-xl-9-24{display:inline-block;zoom:1;letter-spacing:normal;word-spacing:normal;vertical-align:top;text-rendering:auto}.u-xl-1-24{width:4.1667%}.u-xl-1-12,.u-xl-2-24{width:8.3333%}.u-xl-1-8,.u-xl-3-24{width:12.5%}.u-xl-1-6,.u-xl-4-24{width:16.6667%}.u-xl-1-5{width:20%}.u-xl-5-24{width:20.8333%}.u-xl-1-4,.u-xl-6-24{width:25%}.u-xl-7-24{width:29.1667%}.u-xl-1-3,.u-xl-8-24{width:33.3333%}.u-xl-3-8,.u-xl-9-24{width:37.5%}.u-xl-2-5{width:40%}.u-xl-10-24,.u-xl-5-12{width:41.6667%}.u-xl-11-24{width:45.8333%}.u-xl-1-2,.u-xl-12-24{width:50%}.u-xl-13-24{width:54.1667%}.u-xl-14-24,.u-xl-7-12{width:58.3333%}.u-xl-3-5{width:60%}.u-xl-15-24,.u-xl-5-8{width:62.5%}.u-xl-16-24,.u-xl-2-3{width:66.6667%}.u-xl-17-24{width:70.8333%}.u-xl-18-24,.u-xl-3-4{width:75%}.u-xl-19-24{width:79.1667%}.u-xl-4-5{width:80%}.u-xl-20-24,.u-xl-5-6{width:83.3333%}.u-xl-21-24,.u-xl-7-8{width:87.5%}.u-xl-11-12,.u-xl-22-24{width:91.6667%}.u-xl-23-24{width:95.8333%}.u-xl-1,.u-xl-1-1,.u-xl-24-24,.u-xl-5-5{width:100%}}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.pure-g [class*"pure-u"],button,html,input,select,textarea{font-family:proxima-nova,sans-serif}body{min-width:320px;color:rgba(0,0,0,0.87);line-height:1.6}h1,h2,h3,h4,h5,h6{font-weight:700;color:rgba(0,0,0,0.87)}h3{font-size:1.25em}h4{font-size:1.125em}a{color:#3b8bba;text-decoration:none}a:visited{color:#265778}dt{font-weight:700}dd{margin:0 0 10px}aside{background:#1f8dd6;padding:.3em 1em;border-radius:3px;color:#fff}aside a,aside a:visited{color:#a9e2ff}#layout{position:relative;padding-left:0}#layout.active{position:relative;left:160px}#layout.active #menu{left:160px;width:160px}.l-box{padding:1em}.l-wrap{margin-left:auto;margin-right:auto}.content .l-wrap{margin-left:-1em;margin-right:-1em}.header{font-family:omnes-pro,sans-serif;max-width:768px;margin:0 auto;padding:1em;text-align:center;border-bottom:1px solid #eee;background:#fff}.header h1{font-size:300%;font-weight:100;margin:0}.header h2{font-size:125%;font-weight:100;line-height:1.5;margin:0;color:rgba(0, 0, 0, 0.54)}.content{margin-left:auto;margin-right:auto;padding-left:1em;padding-right:1em;max-width:768px}.content .content-subhead{margin:2em 0 1em;font-weight:300;color:#888;position:relative}.content .content-spaced{line-height:1.8}.content .content-quote{font-family:Georgia,serif;color:#666;font-style:italic;line-height:1.8;border-left:5px solid #ddd;padding-left:1.5em}.content-link{position:absolute;top:0;right:0;display:block;height:100%;width:20px;background:url(/img/link-icon.png) center center/20px 20px no-repeat}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:2dppx){.content-link{background-image:url(/img/link-icon@2x.png)}}code,pre{font-family:Consolas,'Liberation Mono',Courier,monospace;color:#333;background:#fafafa}code{padding:.2em .4em;white-space:nowrap}.content p code{font-size:90%}.code{margin-left:-1em;margin-right:-1em;padding:1em;border:1px solid #eee;border-left-width:0;border-right-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch}.code code{font-size:95%;white-space:pre;word-wrap:normal;padding:0;background:0 0}.code-wrap code{white-space:pre-wrap;word-wrap:break-word}.footer{font-size:87.5%;border-top:1px solid #eee;margin-top:3.4286em;padding:1.1429em;background:#fafafa}.legal{line-height:1.6;text-align:center;margin:0 auto}.legal-license{margin-top:0}.legal-links{list-style:none;padding:0;margin-bottom:0}.legal-copyright{margin-top:0;margin-bottom:0}#layout,#menu,.menu-link{-webkit-transition:all .2s ease-out;-moz-transition:all .2s ease-out;-ms-transition:all .2s ease-out;-o-transition:all .2s ease-out;transition:all .2s ease-out}#layout.active .menu-link{left:160px}#menu{margin-left:-160px;width:160px;position:fixed;top:0;left:0;bottom:0;z-index:1000;background:#191818;overflow-y:auto;-webkit-overflow-scrolling:touch}#menu a{color:#999;border:none;white-space:normal;padding:.625em 1em}#menu .pure-menu-open{background:0 0;border:0}#menu .pure-menu ul{border:none;background:0 0}#menu .pure-menu .menu-item-divided,#menu .pure-menu ul{border-top:1px solid #333}#menu .pure-menu li a:focus,#menu .pure-menu li a:hover{background:#333}.menu-link{position:fixed;display:block;top:0;left:0;background:#000;background:rgba(0,0,0,.7);font-size:11px;z-index:10;width:4em;height:4em;padding:1em}.menu-link:focus,.menu-link:hover{background:#000}.menu-link span{position:relative;display:block;margin-top:.9em}.menu-link span,.menu-link span:after,.menu-link span:before{background-color:#fff;width:100%;height:.2em;-webkit-transition:all .4s;-moz-transition:all .4s;-ms-transition:all .4s;-o-transition:all .4s;transition:all .4s}.menu-link span:after,.menu-link span:before{position:absolute;top:-.55em;content:" "}.menu-link span:after{top:.55em}.menu-link.active span{background:0 0}.menu-link.active span:before{-webkit-transform:rotate(45deg) translate(.5em,.4em);-moz-transform:rotate(45deg) translate(.5em,.4em);-ms-transform:rotate(45deg) translate(.5em,.4em);-o-transform:rotate(45deg) translate(.5em,.4em);transform:rotate(45deg) translate(.5em,.4em)}.menu-link.active span:after{-webkit-transform:rotate(-45deg) translate(.4em,-.3em);-moz-transform:rotate(-45deg) translate(.4em,-.3em);-ms-transform:rotate(-45deg) translate(.4em,-.3em);-o-transform:rotate(-45deg) translate(.4em,-.3em);transform:rotate(-45deg) translate(.4em,-.3em)}#menu .pure-menu-heading{font-size:125%;font-weight:300;letter-spacing:.1em;color:#fff;margin-top:0;padding:.5em .8em}#menu .pure-menu-heading:focus,#menu .pure-menu-heading:hover{color:#999}#menu .pure-menu-selected{background:#1f8dd6}#menu .pure-menu-selected a{color:#fff}#menu li.pure-menu-selected a:focus,#menu li.pure-menu-selected a:hover{background:0 0}.pure-img-responsive{max-width:100%;height:auto}.pure-paginator .pure-button{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}.pure-button{font-family:inherit}a.pure-button-primary{color:#000}.notice{background-color:#61B842;color:#fff}.muted{color:#ccc}.pure-table td,.pure-table th{padding:.5em 1em}.table-responsive{margin-left:-1em;margin-right:-1em;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1em}.table-responsive table{width:100%;min-width:35.5em;border-left-width:0;border-right-width:0}.table-responsive .mq-table{width:100%;min-width:44em}.mq-table th.highlight{background-color:#ffea85}.mq-table td.highlight{background-color:#fffae5}.mq-table td.highlight code,.mq-table th.highlight code{background:#fffff3}.mq-table-mq code{font-size:.875em}.grids-example{background:#fafafa;margin:2em auto;border-bottom:1px solid #ddd}.is-code-full{text-align:center}.is-code-full .code{margin-left:auto;margin-right:auto}@media screen and (min-width:35.5em){.legal-license{text-align:left;margin:0}.legal-copyright,.legal-links,.legal-links li{text-align:right;margin:0}}@media screen and (min-width:48em){.l-wrap,.l-wrap .content{padding-left:1em;padding-right:1em}.content .l-wrap{margin-left:-2em;margin-right:-2em}.content,.header{padding-left:2em;padding-right:2em}.header h1{font-size:350%}.header h2{font-size:150%}.content p{font-size:1.125em}.code{margin-left:auto;margin-right:auto;border-left-width:1px;border-right-width:1px}.table-responsive{margin-left:auto;margin-right:auto}.table-responsive table{border-left-width:1px;border-right-width:1px}}@media (min-width:58em){#layout{padding-left:160px;left:0}#menu{left:160px}.menu-link{position:fixed;left:160px;display:none}#layout.active .menu-link{left:160px}}.pure-form label{font-size:100%}.grids-example{border-top:0}.grid-input,.grid-output{margin-bottom:1em}.grid-tabs{padding:3em 0 0;margin:0}.grid-output-download{font-size:1.2em}.grid-tab-link,.grid-tab-link:visited{font-weight:700;padding:1em;border:1px solid transparent;border-bottom-color:transparent;color:#666;transition:all .1s;cursor:pointer;top:-.813em;position:relative;font-size:.8em}.download-link,.grid-output-tabs .grid-tab-link,.grid-output-tabs .grid-tab-link:visited{padding-left:1em;padding-right:1em}.grid-tab-link-selected,.grid-tab-link-selected:visited{border:1px solid #ccc;background:#fff;border-bottom-color:transparent;border-top-left-radius:3px;border-top-right-radius:3px}.grid-content{padding:.5em;border:1px solid #ccc;border-radius:0 3px 3px;overflow-y:hidden}.grid-panel{position:absolute;top:-9999px;left:-9999px}.grid-panel-selected{position:static}.grid-output .code{overflow-y:scroll;-webkit-overflow-scrolling:touch;margin:0}#css .code,#css-old-ie .code{max-height:35em}.offset-1-12{margin-left:8.33%}#media-query-table{margin-bottom:1em;width:100%}#media-query-table td{padding:.3em}.media-query-table-example{font-size:.875em;font-weight:400;display:none}.media-query-table-example code{background:0 0;color:inherit;padding:0}.mq-key,.mq-value{width:100%}.controls{text-align:center;margin-top:1em}#options .cols-control label,#options .prefix-control label{width:8.75em}.cols-control input,.remove-row{text-align:center}.remove-mq{background:#fff;border:1px solid #e53535;font-weight:500;color:#e53535;margin-top:.25em;padding:.25em .5em;box-shadow:none;-webkit-transition:background .1s;-moz-transition:background .1s;transition:background .1s}.remove-mq:active,.remove-mq:hover{color:#fff;background:#f97272;box-shadow:none}.grids-example [class*"pure-u"]{font-family:Consolas,'Liberation Mono',Courier,monospace;text-align:center;padding:1em 0;border:1px solid #ddd;border-right:none;border-bottom:none}.invalid-message{color:#b94a48;font-size:90%}.pure-form input[invalid]{border:1px solid #e53535}.download-link{display:block}@media screen and (min-width:48em){.controls{text-align:left}.grid-content{padding:1em}.grid-tab-link{font-size:1em}.invalid-message{padding-top:.625em}.grid-output-download{font-size:1.5em}.media-query-table-example{display:block}}</style>
+</head>
+<!-- http://purecss.io/ -->
+<body>
+   <style scoped>
+      .button-main
+      .button-success,
+      .button-warning
+      .button-error,
+      .button-main {background: rgb(115, 143, 254);} /* #738ffe = Blue 400 */
+      .button-success {background: rgb(43, 175, 43);} /* #2baf2b = Green 400 */
+      .button-warning {background: rgb(255, 179, 0);} /* #ffb300 = Amber 600 */
+      .button-error {background: rgb(255, 112, 67);} /* #ff7043 = Deep Orange 400 */
+    </style>
+    <div class="header">
+        <h1><?= GVAR.SCRIPT_NAME ?></h1>
+        <h2>Control Panel</h2>
+    </div>
+    <br>
+    <div class="content">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+            <legend>Main controls</legend>
+                <div class="pure-control-group">
+                    <label for="name">Scan dir to cache file</label>
+                    <button type="submit" class="pure-button button-error" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bA')).withSuccessHandler(setSuccess('bA')).setDirScanToCacheFile()">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bA" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Transfer ownership</label>
+                    <button type="submit" class="pure-button button-error" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bG')).withSuccessHandler(setSuccess('bG')).setTransferOwnership()">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bG" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Settle new file for:</label>
+                    <select id="settle-new-file">
+                      <option>dirScan</option>
+                      <option>transResult</option>
+                    </select>
+                    <button type="submit" class="pure-button button-warning" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bB')).withSuccessHandler(setSuccess('bB')).getCacheFileId('true',$('#settle-new-file').val())">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bB" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Clean existing file for:</label>
+                    <select id="clean-existing-file">
+                      <option>dirScan</option>
+                      <option>transResult</option>
+                    </select>
+                    <button type="submit" class="pure-button button-warning" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bC')).withSuccessHandler(setSuccess('bC')).setCleanCacheFile($('#clean-existing-file').val())">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bC" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Get active triggers</label>
+                    <button type="submit" class="pure-button button-main" onclick="var runResult = google.script.run.withSuccessHandler(getTriggers).getScriptTriggersArray()">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bI" disabled>...</button>
+                </div>
+                <ul id="triggers">
+                  <li>Click 'Run' button to get triggers...</li>
+                </ul>
+                <div class="pure-control-group">
+                    <label for="name">Delete triggers for:</label>
+                    <select id="trigger-function-to-delete">
+                      <option>setTransferOwnership</option>
+                      <option>setDirScanToCacheFile</option>
+                    </select>
+                    <button type="submit" class="pure-button button-warning" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bE')).withSuccessHandler(setSuccess('bE')).setDeleteAllTriggersOfHandlerFunction($('#trigger-function-to-delete').val())">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bE" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Release user lock</label>
+                    <button type="submit" class="pure-button button-success" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bD')).withSuccessHandler(setSuccess('bD')).setReleaseUserLock()">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bD" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">File count e-mail for:</label>
+                    <input id="user-email" type="email" placeholder="E-mail address">
+                    <button type="submit" class="pure-button button-success" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bF')).withSuccessHandler(setSuccess('bF')).getUserSharedFileCount($('#user-email').val())">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bF" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Revoke access</label>
+                    <a href=<?= "https://script.google.com/a/" + GVAR.DOMAIN_OF_GOOGLE_APPS + "/d/" + GVAR.SCRIPT_URL_ID + "/manage/uninstall" ?>>Open URL</a>
+                </div>
+          </fieldset>
+        </form>
+        <form class="pure-form pure-form-aligned">
+          <fieldset>
+          <legend>Global variables</legend>
+            <div class="pure-control-group">
+              <label for="name">Transfer ownership to:</label>
+              <input id="TRANSFER_OWNERSHIP_TO" type="text" placeholder=<?=GVAR.TRANSFER_OWNERSHIP_TO?>>
+            </div>
+            <div class="pure-control-group">
+              <label for="name">Domain of Google Apps:</label>
+              <input id="DOMAIN_OF_GOOGLE_APPS" type="text" placeholder=<?=GVAR.DOMAIN_OF_GOOGLE_APPS?>>
+            </div>
+            <div class="pure-control-group">
+              <label for="name">Dir scan cache file lifetime (hours):</label>
+              <input id="CACHE_FILE_LIFETIME" type="text" placeholder=<?=GVAR.CACHE_FILE_LIFETIME?>>
+            </div>
+            <div class="pure-control-group">
+              <label for="name">Root folder ID:</label>
+              <input id="ROOT_FOLDER_ID" type="text" placeholder=<?=GVAR.ROOT_FOLDER_ID?>>
+            </div>
+            <div class="pure-control-group">
+              <label for="name">Cache folder ID:</label>
+              <input id="CACHE_FOLDER_ID" type="text" placeholder=<?=GVAR.CACHE_FOLDER_ID?>>
+            </div>
+            <div class="pure-control-group">
+              <label for="name">Log file ID:</label>
+              <input id="LOG_FILE_ID" type="text" placeholder=<?=GVAR.LOG_FILE_ID?>>
+            </div>
+              <!--<div class="pure-control-group">
+                <label for="name">Set global variables</label>
+                <button type="submit" class="pure-button button-error" onclick="var runResult = google.script.run.withFailureHandler(setFailure('bX')).withSuccessHandler(setSuccess('bX')).setGlobalVariables($('#user-email').val())">Run</button>
+                <button type="submit" class="pure-button pure-button-disabled" id="bX" disabled>...</button>
+              </div>-->
+          </fieldset>
+        </form>
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+            <legend>Actual variables and outputs</legend>
+                <div class="pure-control-group">
+                    <label for="name">Work folder ID</label>
+                    <a href=<?= "https://drive.google.com/open?id=" + GVAR.CACHE_FOLDER_ID + "&authuser=0"?>><?=GVAR.CACHE_FOLDER_ID?></a>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Actual cache file ID</label>
+                    <a href=<?= "https://drive.google.com/open?id=" + PropertiesService.getScriptProperties().getProperty("cacheFileId" + "_" + "dirScan") + "&authuser=0"?>><?=PropertiesService.getScriptProperties().getProperty("cacheFileId" + "_" + "dirScan")?></a>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Actual result file ID</label>
+                    <a href=<?= "https://drive.google.com/open?id=" + PropertiesService.getScriptProperties().getProperty("cacheFileId" + "_" + "transResult") + "&authuser=0"?>><?=PropertiesService.getScriptProperties().getProperty("cacheFileId" + "_" + "transResult")?></a>
+                </div>
+                <!--<div class="pure-control-group">
+                    <label for="name">Show user triggers</label>
+                    <a href=<?= "https://script.google.com/a/macros/netmail.eu/triggers?id=" + GVAR.SCRIPT_PROJECT_KEY ?>>Open URL</a>
+                </div>-->
+          </fieldset>
+        </form>
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="name">Get file log</label>
+                    <!--<button type="submit" class="pure-button button-main" onclick="var runResult = google.script.run.withSuccessHandler(getLog).getScriptLogArray()">Run</button>-->
+                    <button type="submit" class="pure-button button-main" onclick="var runResult = google.script.run.withSuccessHandler(getLog).getFlog()">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bH" disabled>...</button>
+                </div>
+                <div class="pure-control-group">
+                    <label for="name">Clean file log</label>
+                    <button type="submit" class="pure-button button-warning" onclick="var runResult = google.script.run.withSuccessHandler(setSuccess('bJ')).Flog('','true')">Run</button>
+                    <button type="submit" class="pure-button pure-button-disabled" id="bJ" disabled>...</button>
+                </div>
+                <ul id="log">
+                  <li>Click 'Run' button to get file log...</li>
+                </ul>
+          </fieldset>
+        </form>
+        </div>
+<script>
+  function setSuccess(elemId) {
+    var setTimer = setInterval(function () {revertClass(elemId)}, 5000);
+    var aElem = document.getElementById(elemId);
+    aElem.innerHTML = "Success.";
+    aElem.setAttribute("class", "pure-button pure-button-disabled button-success");
+  }
+  function setFailure(elemId) {
+    var setTimer = setInterval(function () {revertClass(elemId)}, 5000);
+    var aElem = document.getElementById(elemId);
+    aElem.innerHTML = "Failure!";
+    aElem.setAttribute("class", "pure-button pure-button-disabled button-error");
+  }
+  function revertClass(elemId) {
+    var aElem = document.getElementById(elemId);
+    aElem.innerHTML = "...";
+    aElem.setAttribute("class", "pure-button pure-button-disabled");    
+  }
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+function getTriggers(items) {
+  var list = $("#triggers");
+  list.empty();
+  if (items.length === 0) {list.append("<li>" + "Trigger list is empty at the moment." + "</li>")};
+  for (var i = 0; i < items.length; i++) {
+    list.append("<li>" + items[i] + "</li>");
+  }
+  setSuccess("bI");
+  return true;
+}
+</script>
+<script>
+function getLog(items) {
+  var list = $("#log");
+  list.empty();
+  if (items.length === 0) {list.append("<li>" + "Log is empty at the moment." + "</li>")};
+  for (var i = 0; i < items.length; i++) {
+    list.append("<li>" + items[i] + "</li>");
+  }
+  setSuccess("bH");
+  return true;
+}
+</script>
+</body>
