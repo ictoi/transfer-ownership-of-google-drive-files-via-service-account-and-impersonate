@@ -59,4 +59,10 @@ var GVAR = {
   
   // log file id
   "LOG_FILE_ID" : "SOME_FILE_ID" // change for production
+  
+  // mail ui file name
+  "MAIL_UI_FILENAME" : "mailui.html", // change for production
+  
+  // webservice ui file name
+  "WEBSERVICE_UI_FILENAME" : "webui.html" // change for production
 };
