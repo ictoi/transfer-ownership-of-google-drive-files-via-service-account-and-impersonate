@@ -20,7 +20,7 @@ function setSendTransactionalEmail(recipientEmailAddress, mailVariablesObj){
                       });
   // get html temlpate
   var aVar = null, htmlBody = null, plainBody = "";  
-  var htmlBody = HtmlService.createHtmlOutputFromFile("MailUi.html").getContent();
+  var htmlBody = HtmlService.createHtmlOutputFromFile(GVAR.MAIL_UI_FILENAME).getContent();
   // get all email variables and replace with data values
   var mailVariables = htmlBody.match(/([~])(?:(?=(\\?))\2.)*?\1/g);
   if (mailVariables !== null) {
