@@ -274,3 +274,16 @@ function getFlog() {
   var logArray = logFileTxt.split("\n");
   return logArray;
 }
+
+/**
+* releases user lock if exists
+* @returns {Bool} success
+*/
+function setReleaseUserLock() {
+  var userLock = LockService.getUserLock();
+  userLock.tryLock(10000);
+  if (!userLock.hasLock()) {
+    userLock.releaseLock();
+  }
+  return true;
+}
