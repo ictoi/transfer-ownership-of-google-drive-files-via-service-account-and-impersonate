@@ -145,8 +145,7 @@ function getCacheFileId(settleNewCacheFile, cacheFilePurpose) {
 * @returns {Bool} success
 */
 function setCleanCacheFile(cacheFilePurpose) {
-  //var cacheFilePurpose = "dirScan";
-  var cacheFilePurpose = "transResult";
+  cacheFilePurpose = (cacheFilePurpose || "transResult");
   var cacheFileId = getCacheFileId(false, cacheFilePurpose);
   var fileCache = null;
   fileCache = DriveApp.getFileById(cacheFileId);
