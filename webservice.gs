@@ -8,7 +8,7 @@ function doGet(request) {
     // check request secret
     if (request.parameters.key == GVAR.WEB_SERVICE_KEY) {
       return HtmlService
-      .createTemplateFromFile("WebUi")
+      .createTemplateFromFile("webui")
       .evaluate()
       .setTitle(GVAR.SCRIPT_NAME)
       .setSandboxMode(HtmlService.SandboxMode.NATIVE);
